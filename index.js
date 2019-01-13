@@ -1,4 +1,6 @@
 const request = require("request");
+const jsonfile = require("jsonfile");
+const file = "./alerts.json";
 const {
   METRA_USERNAME,
   METRA_PASSWORD,
@@ -19,6 +21,7 @@ const username = process.env.METRA_USERNAME,
     process.env.METRA_ALERTS_PATH;
 
 request({ url }, function(error, response, body) {
-  console.log(body);
+  console.dir(body);
   console.log(error);
+  jsonfile.writeFileSync(file, body);
 });
