@@ -1,6 +1,5 @@
 const request = require("request");
-const jsonfile = require("jsonfile");
-const file = "./alerts.json";
+
 const {
   METRA_USERNAME,
   METRA_PASSWORD,
@@ -23,5 +22,53 @@ const username = process.env.METRA_USERNAME,
 request({ url }, function(error, response, body) {
   console.dir(body);
   console.log(error);
-  jsonfile.writeFileSync(file, body);
 });
+
+/**
+ * Mongoose schema
+ */
+
+/*
+{
+	id: {
+    type: 'String',
+    unique: true,
+    required: true
+	},
+	is_deleted: {
+		type: 'Boolean'
+	},
+	alert: {
+		url: {
+			translation: {
+				type: [
+					'Mixed'
+				]
+			}
+		},
+		informed_entity: {
+			type: [
+				'Mixed'
+			]
+		},
+		active_period: {
+			type: [
+				'Mixed'
+			]
+		},
+		header_text: {
+			translation: {
+				type: [
+					'Mixed'
+				]
+			}
+		},
+		description_text: {
+			translation: {
+				type: [
+					'Mixed'
+				]
+			}
+		}
+	}
+}*/
